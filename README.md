@@ -18,4 +18,4 @@ Criar um espaço para reunir nossos interesses e falar sobre o que nos inspira e
 - Lívia
 
 # Licença
-Esse projeto é de uso pessoal/esducacional. 2025.
+Esse projeto é de uso pessoal/educacional. 2025.
