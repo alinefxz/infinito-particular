@@ -1,259 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Infinito Particular</title>
+  <link rel="icon" type="image/png" href="../imagens/logo.png">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;600&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f9f7f3;
-  color: #2b2b2b;
-  line-height: 1.6;
-}
-
-/* topo */
-.topo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  flex-wrap: wrap;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.logo img {
-  width: 50px;
-  height: auto;
-}
-
-.logo h1 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1rem;
-  line-height: 1.1;
-}
-
-.logo span {
-  color: #826c5e;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-}
-
-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #826c5e;
-}
-
-/* intro */
-.intro {
-  text-align: center;
-  padding: 4rem 1.5rem 2rem;
-}
-
-.intro h2 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.intro p {
-  color: #444;
-  margin-bottom: 1.5rem;
-}
-
-.botao {
-  background-color: #e7c6b8;
-  color: #2b2b2b;
-  padding: 0.8rem 1.8rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-
-.botao:hover {
-  background-color: #dcb2a3;
-}
-
-/* mundos */
-.mundos {
-  padding: 3rem 1.5rem;
-  text-align: center;
-}
-
-.mundos h3 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.card {
-  background-color: #f3ede7;
-  border-radius: 12px;
-  padding: 1.5rem;
-  width: 260px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card:nth-child(1) { background-color: #f6e3db; }
-.card:nth-child(2) { background-color: #f1d8c9; }
-.card:nth-child(3) { background-color: #dfe8dc; }
-
-.icone {
-  font-size: 1.8rem;
-  margin-bottom: 0.8rem;
-}
-
-.card h4 {
-  font-family: 'Libre Baskerville', serif;
-  margin-bottom: 0.5rem;
-}
-
-/* sobre */
-.sobre {
-  padding: 3rem 2rem;
-  background-color: #f3ede7;
-  border-radius: 20px;
-  max-width: 500px;
-  margin: 3rem auto;
-  text-align: left;
-}
-
-.sobre h3 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-.sobre p {
-  margin-bottom: 1.5rem;
-}
-
-.botao-sobre {
-  background-color: #e7c6b8;
-  color: #2b2b2b;
-  padding: 0.6rem 1.5rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-
-.botao-sobre:hover {
-  background-color: #dcb2a3;
-}
-
-/* rodapé */
-footer {
-  position: relative;
-  text-align: center;
-  font-size: 0.9rem;
-  padding: 2rem 1rem;
-  color: #777;
-  border-top: 1px solid #ddd;
-}
-
-.rodape-info {
-  position: relative;
-}
-
-.link-canto {
-  position: absolute;
-  left: 0;
-  bottom: 100%;
-  transform: translateY(-0.8rem);
-  font-size: 0.85rem;
-  color: #777;
-  text-decoration: none;
-}
-
-.link-canto:hover {
-  color: #826c5e;
-  text-decoration: underline;
-}
-
-/* responsivo */
-@media (max-width: 700px) {
-  .topo {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  nav ul {
-    justify-content: center;
-  }
-
-  .intro h2 {
-    font-size: 1.6rem;
-  }
-
-  .card {
-    width: 90%;
-  }
-
-  .sobre {
-    width: 90%;
-    text-align: center;
-  }
-
-  .link-canto {
-    position: static;
-    display: block;
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
-}
-
-</style>
 <body>
-  <header class="topo">
+  <header class="topo" id="topo">
     <div class="logo">
-      <img src="../imagens/logo.jpg" alt="Logo Infinito Particular">
+      <img src="../imagens/logo.png" alt="Logo Infinito Particular">
       <h1>Infinito<br><span>Particular</span></h1>
     </div>
-    <nav>
+    
+    <!-- menu hambúrguer -->
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <nav id="nav">
       <ul>
-        <li><a href="#">Livros</a></li>
-        <li><a href="#">Filmes</a></li>
-        <li><a href="#">Música</a></li>
-        <li><a href="#">Curiosidades</a></li>
         <li><a href="#">Sobre</a></li>
         <li><a href="#">Contato</a></li>
       </ul>
@@ -264,43 +35,52 @@ footer {
     <section class="intro">
       <h2>Seu universo de descobertas.<br>Um convite à curiosidade.</h2>
       <p><strong>Explore os universos</strong> que habitam aqui.</p>
-      <a href="#" class="botao">Explorar conteúdo</a>
     </section>
 
-    <section class="mundos">
-      <h3>Mundos para explorar</h3>
-      <div class="cards">
-        <div class="card">
-          <div class="icone"> <a href="../imagens/livros_card_1.png"></a></div>
-          <h4>Livros e Letras</h4>
-          <p>Imersões nas tramas e palavras que habitam o tempo.</p>
+    <div class="conteudo-principal">
+      <section class="mundos">
+        <h3>Mundos para explorar</h3>
+        <div class="cards">
+          <div class="card">
+            <div class="icone">📚</div>
+            <h4>Livros e Letras</h4>
+            <p>sbafjkhakhwefksawegf</p>
+          </div>
+          <div class="card">
+            <div class="icone">🎬</div>
+            <h4>Tela e Pipoca</h4>
+            <p>bsjfbjhakfaljfgkjaskjf</p>
+          </div>
+          <div class="card">
+            <div class="icone">🎵</div>
+            <h4>Músicas</h4>
+            <p>jhgdjgshjdgasgfjgakf</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="icone">🎬</div>
-          <h4>Tela e Pipoca</h4>
-          <p>Onde o cinema encontra a emoção em cada cena.</p>
-        </div>
-        <div class="card">
-          <div class="icone">🎵</div>
-          <h4>Mandos e Melodias</h4>
-          <p>Entre o som e o sentimento, a trilha da alma.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="sobre">
-      <h3>Sobre o Infinito Particular</h3>
-      <p>Bem-vindo ao nosso espaço. Aqui reunimos mundos, ideias e curiosidades que celebram o encanto de descobrir.</p>
-      <a href="#" class="botao-sobre">Saiba mais</a>
-    </section>
+      <aside class="sobre">
+        <h3>Sobre o Infinito Particular</h3>
+        <p>Bem-vindo ao nosso espaço. Aqui reunimos mundos, ideias e curiosidades que celebram o encanto de descobrir.</p>
+        <a href="#" class="botao-sobre">Saiba mais</a>
+      </aside>
+    </div>
   </main>
+
+  <!-- botao voltar ao início -->
+  <div class="back-to-top" id="backToTop">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+    </svg>
+  </div>
 
   <footer>
     <div class="rodape-info">
-        <a href="#" class="link-canto">Linka Repidce</a>
-        <p>“Só não se perca ao entrar, no nosso infinito particular.”</p>
+        <p>"Só não se perca ao entrar, no nosso infinito particular."</p>
         <small>Infinito Particular © 2025 — feito com amor e música brasileira</small>
     </div>
   </footer>
+
+  <script src="../js/script.js"></script>
 </body>
 </html>
