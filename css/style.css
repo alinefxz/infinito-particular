@@ -197,6 +197,37 @@ nav a:hover {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.sobre-texto {
+  width: 70%;          
+  max-width: 800px;    
+  margin: 40px auto;  
+  padding: 60x;       
+  line-height: 1.2;    
+  font-size: 1.1rem;   
+}
+.estrela-flutuante {
+  position: fixed;       
+  top: 20%;             
+  right: 10%;           
+  width: 60px;           
+  opacity: 0.8;         
+  z-index: 1000;
+  animation: flutuar 6s infinite ease-in-out; 
+}
+
+@keyframes flutuar {
+  0% { transform: translateY(0px) rotate(5deg); }
+  50% { transform: translateY(-15px) rotate(10deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+/* efeito de transição */
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; 
+}
+body.fade-in {
+  opacity: 1;
+}
 
 /* rodapé */
 footer {
