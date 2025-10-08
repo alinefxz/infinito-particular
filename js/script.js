@@ -61,3 +61,22 @@ backToTop.addEventListener('click', function() {
     behavior: 'smooth'
   });
 });
+// efeito de transição 
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.body.classList.add("fade-in");
+});
+
+
+const links = document.querySelectorAll("a[href]");
+links.forEach(link => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault(); 
+    let href = this.getAttribute("href");
+
+    document.body.classList.remove("fade-in"); 
+    setTimeout(() => {
+      window.location.href = href; 
+    }, 500); 
+  });
+});
