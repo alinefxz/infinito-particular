@@ -152,7 +152,6 @@ nav a:hover {
   margin-bottom: 2rem;
 }
 
-/* === ALTERADO A PARTIR DAQUI === */
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -161,75 +160,31 @@ nav a:hover {
 }
 
 .card {
-  position: relative;
   background-color: #f3ede7;
   border-radius: 12px;
-  overflow: hidden;
+  padding: 1.5rem;
   width: 260px;
-  height: 320px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  text-decoration: none;
-  color: #2b2b2b;
+  transition: transform 0.2s;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 14px rgba(0,0,0,0.15);
 }
 
-/* imagem de fundo */
-.card img.bg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.card:hover img.bg {
-  transform: scale(1.05);
-}
-
-/* camada escura leve por cima da imagem para melhor contraste */
-.card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.55) 20%, rgba(0,0,0,0.15) 80%);
-  z-index: 1;
-}
-
-/* logo e texto por cima da imagem */
-.card-content {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  color: #fff;
-  z-index: 2;
-  width: 100%;
-  padding: 0 1rem;
-}
-
-.card-content img.logo-card {
-  width: 55px;
-  height: auto;
-  margin-bottom: 0.6rem;
-}
-
-.card-content h4 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-/* cores fallback */
 .card:nth-child(1) { background-color: #f6e3db; }
 .card:nth-child(2) { background-color: #f1d8c9; }
 .card:nth-child(3) { background-color: #dfe8dc; }
-/* === ATÉ AQUI ALTERADO === */
+
+.icone {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.card h4 {
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: 0.5rem;
+}
 
 /* sobre */
 .sobre {
@@ -394,6 +349,7 @@ footer {
     font-size: 1.1rem;
   }
 
+  /* Overlay escuro quando menu está aberto */
   body::before {
     content: '';
     position: fixed;
@@ -457,17 +413,5 @@ footer {
   .botao, .botao-sobre {
     padding: 0.7rem 1.5rem;
     font-size: 0.95rem;
-  }
-
-  .card {
-    height: 250px;
-  }
-
-  .card-content img.logo-card {
-    width: 45px;
-  }
-
-  .card-content h4 {
-    font-size: 1rem;
   }
 }
