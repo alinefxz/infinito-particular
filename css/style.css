@@ -112,121 +112,10 @@ nav a:hover {
   margin-bottom: 1.5rem;
 }
 
-.botao {
-  background-color: #e7c6b8;
-  color: #2b2b2b;
-  padding: 0.8rem 1.8rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s;
-  display: inline-block;
-}
-
-.botao:hover {
-  background-color: #dcb2a3;
-}
-
-/* mundos e sobre lado a lado */
-.conteudo-principal {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 3rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-/* mundos */
-.mundos {
-  flex: 1 1 600px;
-  min-width: 300px;
-  text-align: center;
-}
-
-.mundos h3 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.card {
-  background-color: #f3ede7;
-  border-radius: 12px;
-  padding: 1.5rem;
-  width: 260px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card:nth-child(1) { background-color: #f6e3db; }
-.card:nth-child(2) { background-color: #f1d8c9; }
-.card:nth-child(3) { background-color: #dfe8dc; }
-
-.icone {
-  /* A propriedade font-size não é mais necessária aqui */
-  margin-bottom: 0.8rem;
-}
-
-.card h4 {
-  font-family: 'Libre Baskerville', serif;
-  margin-bottom: 0.5rem;
-}
-
-/* sobre */
-.sobre {
-  flex: 0 0 320px;
-  max-width: 320px;
-  padding: 2.5rem 2rem;
-  background-color: #f3ede7;
-  border-radius: 20px;
-  text-align: left;
-  align-self: flex-start;
-}
-
-.sobre h3 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-.sobre p {
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-}
-
-.botao-sobre {
-  background-color: #e7c6b8;
-  color: #2b2b2b;
-  padding: 0.6rem 1.5rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s;
-  display: inline-block;
-}
-
-.botao-sobre:hover {
-  background-color: #dcb2a3;
-}
-
 /* Botão voltar ao início */
 .back-to-top {
   position: fixed;
-  bottom: 30px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 50px;
@@ -238,7 +127,7 @@ nav a:hover {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, bottom 0.3s ease; /* Adicionada transição para bottom */
   opacity: 0;
   visibility: hidden;
   z-index: 900;
@@ -393,44 +282,269 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
-  .logo h1 {
-    font-size: 0.9rem;
-  }
-
-  .logo img {
-    width: 40px;
-  }
-
-  .intro h2 {
-    font-size: 1.4rem;
-  }
-
-  .mundos h3 {
-    font-size: 1.2rem;
-  }
-
-  .botao, .botao-sobre {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.95rem;
-  }
-}
-
-.cards a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.icone img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
-}
-
+/* transição*/
 body {
     opacity: 0;
     transition: opacity 0.5s ease-in-out; 
   }
 body.fade-in {
     opacity: 1;
+}
+
+body {
+  position: relative;
+  min-height: 100vh; /* Garante que o body ocupe toda a altura da viewport */
+}
+
+body::before {
+  content: '';
+  position: fixed; /* Mudado de absolute para fixed para garantir que fique sempre visível */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../imagens/fundolivros.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3; /* Opacidade da imagem de fundo */
+  z-index: -1; /* Garante que a imagem de fundo fique atrás do conteúdo */
+}
+
+/* Responsividade para a imagem de fundo em telas pequenas */
+@media (max-width: 768px) {
+  body::before {
+    background-size: cover; /* Garante que a imagem cubra toda a área */
+    background-attachment: scroll; /* Remove o fixed em mobile para melhor performance */
+  }
+}
+
+
+
+/* Estante de Livros */
+.bookshelf-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.bookshelf {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  align-items: end;
+  padding: 2rem;
+  background: linear-gradient(to bottom, transparent 0%, rgba(130, 108, 94, 0.1) 100%);
+  border-radius: 10px;
+}
+
+.book {
+  position: relative;
+  width: 150px;
+  height: 220px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  perspective: 1000px;
+}
+
+.book img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 
+              0 6px 20px rgba(0, 0, 0, 0.19);
+  transition: all 0.3s ease;
+}
+
+.book:hover {
+  transform: translateY(-15px) scale(1.05);
+}
+
+.book:hover img {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 
+              0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.book-spine {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.75rem;
+  color: #826c5e;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.book:hover .book-spine {
+  opacity: 1;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: #f9f7f3;
+  margin: 5% auto;
+  padding: 0;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.3s ease;
+  position: relative;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  color: #826c5e;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: #2b2b2b;
+}
+
+.modal-body {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.modal-body img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.modal-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-info h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.8rem;
+  color: #2b2b2b;
+  margin-bottom: 0.5rem;
+}
+
+.modal-author,
+.modal-year,
+.modal-pages {
+  font-size: 1rem;
+  color: #555;
+}
+
+.modal-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  text-align: justify;
+  margin-top: 1rem;
+}
+
+/* Responsivo para Modal */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+  }
+
+  .modal-body {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .modal-body img {
+    width: 150px;
+    height: 225px;
+  }
+
+  .modal-info h2 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .close {
+    right: 15px;
+    top: 10px;
+    font-size: 30px;
+  }
+}
+
+/* Responsivo para Estante */
+@media (max-width: 768px) {
+  .bookshelf {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .book {
+    width: 120px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bookshelf {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .book {
+    width: 100px;
+    height: 150px;
+  }
 }
