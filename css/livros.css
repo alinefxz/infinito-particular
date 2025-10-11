@@ -16,13 +16,13 @@ body {
   color: #2b2b2b;
   line-height: 1.6;
   position: relative;
-  min-height: 100vh; /* Garante que o body ocupe toda a altura da viewport */
+  min-height: 100vh;
 }
 
-/* Imagem de fundo do body */
+/* Imagem de fundo */
 body::before {
   content: '';
-  position: fixed; /* Mantém a imagem fixa no viewport */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -31,11 +31,11 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.3; /* Opacidade da imagem de fundo */
-  z-index: -1; /* Garante que a imagem de fundo fique atrás do conteúdo */
+  opacity: 0.3;
+  z-index: -1;
 }
 
-/* topo */
+/* TOPO */
 .topo {
   display: flex;
   justify-content: space-between;
@@ -66,13 +66,13 @@ body::before {
   color: #826c5e;
 }
 
-/* Menu hambúrguer */
+/* MENU HAMBÚRGUER - corrigido */
 .menu-toggle {
   display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
-  z-index: 1000;
+  z-index: 1002;
 }
 
 .menu-toggle span {
@@ -84,7 +84,8 @@ body::before {
 }
 
 .menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #826c5e;
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -92,7 +93,8 @@ body::before {
 }
 
 .menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  transform: rotate(-45deg) translate(6px, -6px);
+  background-color: #826c5e;
 }
 
 nav ul {
@@ -113,7 +115,7 @@ nav a:hover {
   color: #826c5e;
 }
 
-/* intro */
+/* INTRO */
 .intro {
   text-align: center;
   padding: 4rem 1.5rem 2rem;
@@ -130,7 +132,7 @@ nav a:hover {
   margin-bottom: 1.5rem;
 }
 
-/* Botão voltar ao início */
+/* BOTÃO VOLTAR AO TOPO */
 .back-to-top {
   position: fixed;
   bottom: 20px;
@@ -145,7 +147,7 @@ nav a:hover {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: all 0.3s ease, bottom 0.3s ease; /* Adicionada transição para bottom */
+  transition: all 0.3s ease, bottom 0.3s ease;
   opacity: 0;
   visibility: hidden;
   z-index: 900;
@@ -168,7 +170,7 @@ nav a:hover {
   fill: #2b2b2b;
 }
 
-/* rodapé */
+/* RODAPÉ */
 footer {
   position: relative;
   text-align: center;
@@ -183,12 +185,8 @@ footer {
   position: relative;
 }
 
-/* responsivo */
+/* RESPONSIVIDADE GERAL */
 @media (max-width: 1024px) {
-  .conteudo-principal {
-    gap: 2rem;
-  }
-
   .cards {
     flex-direction: column;
     align-items: center;
@@ -201,15 +199,6 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .conteudo-principal {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .mundos {
-    width: 100%;
-  }
-
   .sobre {
     width: 100%;
     max-width: 100%;
@@ -223,12 +212,10 @@ footer {
     padding: 1rem 1.5rem;
   }
 
-  /* Mostrar menu hambúrguer */
   .menu-toggle {
     display: flex;
   }
 
-  /* Esconder navegação padrão e transformar em menu mobile */
   nav {
     position: fixed;
     top: 0;
@@ -236,10 +223,10 @@ footer {
     width: 70%;
     max-width: 300px;
     height: 100vh;
-    background-color: #f9f7f3; /* Fundo do menu com a cor original do site */
+    background-color: #f9f7f3;
     box-shadow: -2px 0 10px rgba(0,0,0,0.1);
     transition: right 0.3s ease;
-    z-index: 1001; /* Aumentado para ficar acima do overlay */
+    z-index: 1001;
     padding: 5rem 2rem 2rem;
   }
 
@@ -256,42 +243,26 @@ footer {
     font-size: 1.1rem;
   }
 
-  /* Overlay escuro quando menu está aberto */
   body.menu-open::after {
-    content: \'\';
+    content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.6); /* Cor de overlay escura */
+    background-color: rgba(0,0,0,0.6);
     opacity: 1;
     visibility: visible;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 1000; /* Abaixo do menu, mas acima do conteúdo */
+    z-index: 1000;
   }
 
-  /* Ajuste para a imagem de fundo do body quando o menu está aberto */
   body.menu-open::before {
-    opacity: 0.1; /* Reduz a opacidade da imagem de fundo para escurecer */
+    opacity: 0.1;
   }
 
   body.menu-open {
     overflow: hidden;
-  }
-
-  .intro h2 {
-    font-size: 1.6rem;
-  }
-
-  .intro p {
-    font-size: 0.95rem;
-  }
-
-  .back-to-top {
-    width: 45px;
-    height: 45px;
-    bottom: 20px;
   }
 
   .back-to-top svg {
@@ -300,24 +271,25 @@ footer {
   }
 }
 
-/* transição*/
+/* Transição de entrada da página */
 body {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out; 
-  }
-body.fade-in {
-    opacity: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
-/* Responsividade para a imagem de fundo em telas pequenas */
+body.fade-in {
+  opacity: 1;
+}
+
+/* Imagem de fundo em telas pequenas */
 @media (max-width: 768px) {
   body::before {
-    background-size: cover; /* Garante que a imagem cubra toda a área */
-    background-attachment: scroll; /* Remove o fixed em mobile para melhor performance */
+    background-size: cover;
+    background-attachment: scroll;
   }
 }
 
-/* Estante de Livros */
+/* ESTANTE DE LIVROS */
 .bookshelf-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -349,8 +321,7 @@ body.fade-in {
   height: 100%;
   object-fit: cover;
   border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 
-              0 6px 20px rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
   transition: all 0.3s ease;
 }
 
@@ -359,8 +330,7 @@ body.fade-in {
 }
 
 .book:hover img {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 
-              0 12px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
 .book-spine {
@@ -381,7 +351,7 @@ body.fade-in {
   opacity: 1;
 }
 
-/* Modal */
+/* MODAL */
 .modal {
   display: none;
   position: fixed;
@@ -396,12 +366,8 @@ body.fade-in {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .modal-content {
@@ -417,14 +383,8 @@ body.fade-in {
 }
 
 @keyframes slideDown {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .close {
