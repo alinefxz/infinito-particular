@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;600&display=swap'   );
 
 * {
   margin: 0;
@@ -18,8 +18,11 @@ body {
   overflow-x: hidden;
 }
 
-/* ================= TOPO ================= */
+body.menu-open {
+  overflow: hidden;
+}
 
+/* ================= TOPO ================= */
 .topo {
   display: flex;
   justify-content: space-between;
@@ -27,17 +30,13 @@ body {
   padding: 1.5rem 2rem;
   background-color: #f9f7f3;
   animation: descerSuave 1s ease forwards;
+  position: relative;
+  z-index: 10; /* Garante que o cabeçalho fique acima do conteúdo, mas abaixo do menu/overlay */
 }
 
 @keyframes descerSuave {
-  from {
-    transform: translateY(-40px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .logo {
@@ -46,41 +45,16 @@ body {
   gap: 0.6rem;
 }
 
-.logo img {
-  width: 50px;
-}
-
-@keyframes girinho {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(8deg); }
-}
+.logo img { width: 50px; }
 
 .logo h1 {
   font-family: 'Libre Baskerville', serif;
   font-size: 1rem;
 }
 
-.logo span {
-  color: #826c5e;
-}
+.logo span { color: #826c5e; }
 
-/* ================= MENU ================= */
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.menu-toggle span {
-  width: 28px;
-  height: 3px;
-  background-color: #2b2b2b;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
+/* ================= MENU (Desktop) ================= */
 nav ul {
   list-style: none;
   display: flex;
@@ -99,8 +73,75 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-/* ================= INTRO ================= */
+/* ================= RESPONSIVIDADE (Menu Mobile) ================= */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1001; /* 1º na hierarquia (topo de tudo) */
+  }
 
+  .menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background-color: #2b2b2b;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #f9f7f3;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    padding: 5rem 2rem;
+    z-index: 1000; /* 2º na hierarquia (abaixo do botão) */
+  }
+
+  nav.active {
+    right: 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+/* ================= OVERLAY ================= */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* 3º na hierarquia (abaixo do menu) */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ================= CONTEÚDO PRINCIPAL ================= */
+/* Adicionado para forçar o conteúdo a ficar abaixo do overlay */
+.intro, .container-form {
+    position: relative;
+    z-index: 1; /* 4º na hierarquia (fundo) */
+}
+
+/* ================= INTRO ================= */
 .intro {
   text-align: center;
   padding: 4rem 1.5rem 2rem;
@@ -109,14 +150,8 @@ nav a:hover {
 }
 
 @keyframes aparecerSuave {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .intro h2 {
@@ -131,7 +166,6 @@ nav a:hover {
 }
 
 /* ================= BOTÕES ================= */
-
 .botao {
   background-color: #e7c6b8;
   color: #2b2b2b;
@@ -157,7 +191,6 @@ nav a:hover {
 }
 
 /* ================= FORMULÁRIO DE CONTATO ================= */
-
 .container-form {
   display: flex;
   justify-content: center;
@@ -179,14 +212,8 @@ nav a:hover {
 }
 
 @keyframes subirSuave {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .form-contato label {
@@ -213,18 +240,48 @@ nav a:hover {
   transform: scale(1.02);
 }
 
-.form-contato ::placeholder {
-  color: #aaa;
-}
+.form-contato ::placeholder { color: #aaa; }
 
-.mensagem-status {
+#form-status {
   text-align: center;
   font-weight: 600;
   margin-top: 0.8rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  display: none;
+}
+#form-status.sucesso {
+  display: block;
+  background-color: #d4edda;
+  color: #155724;
+}
+#form-status.erro {
+  display: block;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* ================= BOTÃO VOLTAR AO TOPO ================= */
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  background-color: #e7c6b8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 900;
 }
 
 /* ================= RODAPÉ ================= */
-
 footer {
   text-align: center;
   font-size: 0.9rem;
@@ -233,125 +290,24 @@ footer {
   border-top: 1px solid #ddd;
   opacity: 0;
   animation: aparecerSuave 1.2s ease forwards 1.2s;
-}
-
-/* ================= RESPONSIVIDADE ================= */
-
-@media (max-width: 768px) {
-  .menu-toggle { display: flex; }
-  nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    max-width: 300px;
-    height: 100vh;
-    background-color: #f9f7f3;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-    padding: 5rem 2rem;
-  }
-  nav.active { right: 0; }
-  nav ul { flex-direction: column; gap: 2rem; }
-  .intro h2 { font-size: 1.6rem; }
-  .container-form { padding: 1.5rem; }
-  .form-contato { padding: 1.5rem; }
-}
-
-.back-to-top {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: none; /* começa escondido */
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.back-to-top:hover {
-  background-color: #555;
-  transform: translateY(-5px);
-}
-
-.back-to-top svg {
-  width: 24px;
-  height: 24px;
-  fill: white;
-}
-
-
-/* ===== Menu Hambúrguer ===== */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.menu-toggle span {
-  width: 28px;
-  height: 3px;
-  background-color: #2b2b2b;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-#menu {
-  display: flex;
-  gap: 1.2rem;
-}
-
-#menu.ativo {
-  display: block; /* ===== Modificação: exibe menu ao clicar ===== */
-}
-
-@media (max-width: 768px) {
-  .menu-toggle { display: flex; }
-  #menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    max-width: 300px;
-    height: 100vh;
-    background-color: #f9f7f3;
-    flex-direction: column;
-    padding: 5rem 2rem;
-    transition: right 0.3s ease;
-  }
-  #menu.ativo { right: 0; } /* ===== Modificação ===== */
-}
-
-/* ===== Botão Voltar ao Topo ===== */
-.back-to-top {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: none; /* começa escondido */
-  z-index: 1000;
-  transition: all 0.3s ease;
+  /* Adicionado para forçar o rodapé a ficar abaixo do overlay */
+  position: relative;
+  z-index: 1;
 }
 
 .back-to-top.visible {
-  display: flex; /* ===== Modificação: classe 'visible' para mostrar ===== */
+  opacity: 1;
+  visibility: visible;
 }
 
 .back-to-top:hover {
-  background-color: #555;
+  background-color: #dcb2a3;
   transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
 
 .back-to-top svg {
   width: 24px;
   height: 24px;
-  fill: white;
+  fill: #2b2b2b;
 }
