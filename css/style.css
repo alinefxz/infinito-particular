@@ -294,77 +294,42 @@ footer {
 }
 
 .card {
-  background-color: #f3ede7;
-  border-radius: 12px;
-  padding: 1.5rem;
+  display: block;
   width: 260px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s;
-  text-decoration: none;       /* remove sublinhado */
-  color: inherit;              /* mantém a cor do texto */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* Imagem do card de livros */
 .card-imagem {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.8rem;
+  height: 100%;
 }
 
 .card-imagem img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* imagem preenche o card */
+  display: block;
 }
 
-/* Mantém ícone centralizado nos outros cards */
-.icone {
-  font-size: 1.8rem;
-  margin-bottom: 0.8rem;
-}
-
-.card h4 {
-  font-family: 'Libre Baskerville', serif;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.card p {
-  text-align: center;
-}
-
-
-@media (max-width: 900px) {
-  .conteudo-principal {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .mundos {
-    width: 100%;
-  }
-
-  .sobre {
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
-    padding: 2rem 1.5rem;
-  }
-}
-
+/* Responsivo */
 @media (max-width: 768px) {
-  .topo {
-    padding: 1rem 1.5rem;
+  .card {
+    width: 90%;
+    max-width: 300px;
+    height: 250px;
   }
+}
+
 
   /* Mostrar menu hambúrguer */
   .menu-toggle {
