@@ -177,7 +177,7 @@ nav a:hover {
 .card:nth-child(3) { background-color: #dfe8dc; }
 
 .icone {
-  font-size: 1.8rem;
+  /* A propriedade font-size não é mais necessária aqui */
   margin-bottom: 0.8rem;
 }
 
@@ -414,4 +414,19 @@ footer {
     padding: 0.7rem 1.5rem;
     font-size: 0.95rem;
   }
+}
+
+/* NOVAS REGRAS ADICIONADAS */
+
+/* Remove o sublinhado e a cor padrão dos links que envolvem os cards */
+.cards a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Estiliza a imagem que agora está dentro do ícone */
+.icone img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
 }
