@@ -112,117 +112,6 @@ nav a:hover {
   margin-bottom: 1.5rem;
 }
 
-.botao {
-  background-color: #e7c6b8;
-  color: #2b2b2b;
-  padding: 0.8rem 1.8rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s;
-  display: inline-block;
-}
-
-.botao:hover {
-  background-color: #dcb2a3;
-}
-
-/* mundos e sobre lado a lado */
-.conteudo-principal {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 3rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-/* mundos */
-.mundos {
-  flex: 1 1 600px;
-  min-width: 300px;
-  text-align: center;
-}
-
-.mundos h3 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.card {
-  background-color: #f3ede7;
-  border-radius: 12px;
-  padding: 1.5rem;
-  width: 260px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card:nth-child(1) { background-color: #f6e3db; }
-.card:nth-child(2) { background-color: #f1d8c9; }
-.card:nth-child(3) { background-color: #dfe8dc; }
-
-.icone {
-  /* A propriedade font-size não é mais necessária aqui */
-  margin-bottom: 0.8rem;
-}
-
-.card h4 {
-  font-family: 'Libre Baskerville', serif;
-  margin-bottom: 0.5rem;
-}
-
-/* sobre */
-.sobre {
-  flex: 0 0 320px;
-  max-width: 320px;
-  padding: 2.5rem 2rem;
-  background-color: #f3ede7;
-  border-radius: 20px;
-  text-align: left;
-  align-self: flex-start;
-}
-
-.sobre h3 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-.sobre p {
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-}
-
-.botao-sobre {
-  background-color: #e7c6b8;
-  color: #2b2b2b;
-  padding: 0.6rem 1.5rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s;
-  display: inline-block;
-}
-
-.botao-sobre:hover {
-  background-color: #dcb2a3;
-}
-
 /* Botão voltar ao início */
 .back-to-top {
   position: fixed;
@@ -393,44 +282,32 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
-  .logo h1 {
-    font-size: 0.9rem;
-  }
-
-  .logo img {
-    width: 40px;
-  }
-
-  .intro h2 {
-    font-size: 1.4rem;
-  }
-
-  .mundos h3 {
-    font-size: 1.2rem;
-  }
-
-  .botao, .botao-sobre {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.95rem;
-  }
-}
-
-.cards a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.icone img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
-}
-
+/* transição*/
 body {
     opacity: 0;
     transition: opacity 0.5s ease-in-out; 
   }
 body.fade-in {
     opacity: 1;
+}
+
+body {
+  position: relative;
+  min-height: 100vh; /* Garante que o body ocupe toda a altura da viewport */
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../imagens/fundolivros.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.3; /* Opacidade da imagem de fundo */
+  z-index: -1; /* Garante que a imagem de fundo fique atrás do conteúdo */
 }
