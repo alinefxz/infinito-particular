@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinito Particular</title>
+  <link rel="icon" type="image/jpeg" href="../imagens/logo.png">
+  <link rel="stylesheet" href="../css/cine.css">
+</head>
+
+<body>
+  <header class="topo" id="topo">
+    <div class="logo">
+      <img src="../imagens/logo.png" alt="Logo Infinito Particular">
+      <h1>Infinito<br><span>Particular</span></h1>
+    </div>
+
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro fade-in">
+      <h2>Sua tela de grandes emoções.<br>Um convite à magia do cinema.</h2>
+      <p><strong>Explore os universos</strong> que ganham vida na tela.</p>
+    </section>
+
+    <div class="filmes-container">
+      <div class="filmes-grid" id="filmesGrid"></div>
+    </div>
+  </main>
+
+  <!-- Modal de Detalhes do Filme -->
+  <div id="filmModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-body">
+        <img id="modalCover" src="" alt="Capa do Filme">
+        <div class="modal-info">
+          <h2 id="modalTitle"></h2>
+          <p id="modalDirector"></p>
+          <p id="modalYear"></p>
+          <p id="modalDuration"></p>
+          <p id="modalDescription"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-to-top" id="backToTop">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+    </svg>
+  </div>
+
+  <footer>
+    <div class="rodape-info">
+        <p>"Só não se perca ao entrar, no nosso infinito particular."</p>
+        <small>Infinito Particular © 2025 — feito com amor e música brasileira</small>
+    </div>
+  </footer>
+
+  <script src="../js/cine.js"></script>
+</body>
+</html>
 
