@@ -561,23 +561,3 @@ body.fade-in {
   padding-bottom: 6rem; /* espaço extra abaixo da estante */
 }
 
-/* MENU e OVERLAY acima de tudo */
-#nav,
-.menu-toggle {
-  z-index: 1002;
-}
-
-body.menu-open::after {
-  z-index: 1001; /* overlay escuro acima de todo o resto */
-}
-
-/* botão e texto de sorteio sempre abaixo do overlay */
-#bookSorter {
-  position: relative;
-  z-index: 1;
-}
-
-body.menu-open #bookSorter {
-  opacity: 0.3;
-  pointer-events: none; /* impede interação enquanto o menu está aberto */
-}
