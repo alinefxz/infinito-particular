@@ -127,7 +127,7 @@ nav a:hover {
   background-color: #dcb2a3;
 }
 
-/* mundos e sobre lado a lado */
+/* === CONTEÚDO PRINCIPAL === */
 .conteudo-principal {
   display: flex;
   flex-wrap: wrap;
@@ -139,7 +139,7 @@ nav a:hover {
   margin: 0 auto;
 }
 
-/* mundos */
+/* === CARDS === */
 .mundos {
   flex: 1 1 600px;
   min-width: 300px;
@@ -163,21 +163,36 @@ nav a:hover {
   background-color: #f3ede7;
   border-radius: 12px;
   padding: 1.5rem;
-  width: 260px;
+  width: 280px;
+  height: 260px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
 }
 
 .card:hover {
   transform: translateY(-5px);
 }
 
-.card:nth-child(1) { background-color: #f6e3db; }
-.card:nth-child(2) { background-color: #f1d8c9; }
-.card:nth-child(3) { background-color: #dfe8dc; }
+.card:nth-child(1) { background-color: #f6e3db; } /* Livro */
+.card:nth-child(2) { background-color: #f1d8c9; } /* Cinema */
+.card:nth-child(3) { background-color: #dfe8dc; } /* Música */
 
 .icone {
   margin-bottom: 0.8rem;
+}
+
+.icone img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 12px;
+  padding: 5px;
+  transition: none; /* sem animação */
 }
 
 .card h4 {
@@ -185,22 +200,7 @@ nav a:hover {
   margin-bottom: 0.5rem;
 }
 
-.card .icone img[src*="cinema_logo.jpg"] {
-  width: 65px;         
-  height: 65px;
-  object-fit: cover;     
-  border-radius: 12px; 
-  padding: 5px;          
-}
-
-/* efeito ao passar o mouse */
-.card:hover .icone img[src*="cinema_logo.jpg"] {
-  transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-}
-
-
-/* sobre */
+/* === SOBRE === */
 .sobre {
   flex: 0 0 320px;
   max-width: 320px;
@@ -237,7 +237,7 @@ nav a:hover {
   background-color: #dcb2a3;
 }
 
-/* Botão voltar ao início */
+/* === BOTÃO VOLTAR AO TOPO === */
 .back-to-top {
   position: fixed;
   bottom: 30px;
@@ -275,7 +275,7 @@ nav a:hover {
   fill: #2b2b2b;
 }
 
-/* rodapé */
+/* === RODAPÉ === */
 footer {
   position: relative;
   text-align: center;
@@ -290,7 +290,7 @@ footer {
   position: relative;
 }
 
-/* responsivo */
+/* === RESPONSIVIDADE === */
 @media (max-width: 1024px) {
   .conteudo-principal {
     gap: 2rem;
@@ -304,6 +304,7 @@ footer {
   .card {
     width: 100%;
     max-width: 320px;
+    height: auto;
   }
 }
 
@@ -330,12 +331,10 @@ footer {
     padding: 1rem 1.5rem;
   }
 
-  /* Mostrar menu hambúrguer */
   .menu-toggle {
     display: flex;
   }
 
-  /* Esconder navegação padrão e transformar em menu mobile */
   nav {
     position: fixed;
     top: 0;
@@ -363,7 +362,6 @@ footer {
     font-size: 1.1rem;
   }
 
-  /* Overlay escuro quando menu está aberto */
   body::before {
     content: '';
     position: fixed;
@@ -385,25 +383,6 @@ footer {
 
   body.menu-open {
     overflow: hidden;
-  }
-
-  .intro h2 {
-    font-size: 1.6rem;
-  }
-
-  .intro p {
-    font-size: 0.95rem;
-  }
-
-  .back-to-top {
-    width: 45px;
-    height: 45px;
-    bottom: 20px;
-  }
-
-  .back-to-top svg {
-    width: 20px;
-    height: 20px;
   }
 }
 
@@ -431,20 +410,15 @@ footer {
 }
 
 .cards a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.icone img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
+  text-decoration: none;
+  color: inherit;
 }
 
 body {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out; 
-  }
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; 
+}
+
 body.fade-in {
-    opacity: 1;
+  opacity: 1;
 }
