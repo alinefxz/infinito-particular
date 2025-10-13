@@ -185,6 +185,21 @@ nav a:hover {
   margin-bottom: 0.5rem;
 }
 
+.card .icone img[src*="cinema_logo.jpg"] {
+  width: 65px;         
+  height: 65px;
+  object-fit: cover;     
+  border-radius: 12px; 
+  padding: 5px;          
+}
+
+/* efeito ao passar o mouse */
+.card:hover .icone img[src*="cinema_logo.jpg"] {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+
 /* sobre */
 .sobre {
   flex: 0 0 320px;
