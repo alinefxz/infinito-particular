@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "invocacaodomal",
       title: "Invocação do Mal",
-      cover: "../imagens/invocaçãodomal.jpg",
+      cover: "../imagens/invocação.jpg",
       director: "James Wan",
       year: "2013",
       duration: "1h 52m",
