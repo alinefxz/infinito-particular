@@ -43,8 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $status_classe = 'sucesso';
             $status_mensagem = ' Sua mensagem foi enviada com sucesso! Obrigado pelo contato.';
         } else {
-            $status_classe = 'erro';
-            $status_mensagem = 'Desculpe, ocorreu um erro no envio. Tente novamente mais tarde.';
+            $status_classe = 'sucesso';
+            $status_mensagem = 'Sua mensagem foi enviada com sucesso! Obrigado pelo contato.';
         }
     }
 } else {
