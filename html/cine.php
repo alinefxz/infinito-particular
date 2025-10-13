@@ -1,3 +1,15 @@
+<?php
+// Frases aleatórias para o rodapé/intro
+$frases = [
+  "“O cinema é a escrita moderna cuja tinta é a luz.” — Jean Cocteau",
+  "“A arte é a mentira que nos permite conhecer a verdade.” — Pablo Picasso",
+  "“O cinema é uma forma de sonhar acordado.” — Federico Fellini",
+  "“O filme é um sonho que você nunca esquece.” — Martin Scorsese",
+  "“O cinema é a maior máquina de empatia que já foi inventada.” — Roger Ebert",
+  "“Só não se perca ao entrar, no nosso infinito particular.”"
+];
+$fraseAleatoria = $frases[array_rand($frases)];
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -23,7 +35,7 @@
 
     <nav id="nav">
       <ul>
-        <li><a href="index.html">Início</a></li>
+        <li><a href="index.php">Início</a></li>
         <li><a href="sobre.html">Sobre</a></li>
         <li><a href="contato.html">Contato</a></li>
       </ul>
@@ -34,6 +46,10 @@
     <section class="intro fade-in">
       <h2>Sua tela de grandes emoções.<br>Um convite à magia do cinema.</h2>
       <p><strong>Explore os universos</strong> que ganham vida na tela.</p>
+
+      <!-- Frase aleatória (inserida via PHP) -->
+      <p class="frase-aleatoria"><?php echo $fraseAleatoria; ?></p>
+
     </section>
 
     <div class="filmes-container">
@@ -66,12 +82,11 @@
 
   <footer>
     <div class="rodape-info">
-        <p>"Só não se perca ao entrar, no nosso infinito particular."</p>
-        <small>Infinito Particular © 2025 — feito com amor e música brasileira</small>
+      <p>"Só não se perca ao entrar, no nosso infinito particular."</p>
+      <small>Infinito Particular © <?php echo date("Y"); ?> — feito com amor e música brasileira</small>
     </div>
   </footer>
 
   <script src="../js/cine.js"></script>
 </body>
 </html>
-
