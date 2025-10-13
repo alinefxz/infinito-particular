@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;600&display=swap');
 
-/* ================= VARIÁVEIS ================= */
+
 :root {
   --cor-fundo: #f9f7f3;
   --cor-texto: #2b2b2b;
@@ -15,7 +15,7 @@
   --transicao: all 0.3s ease;
 }
 
-/* ================= RESET ================= */
+/*RESET */
 * {
   margin: 0;
   padding: 0;
@@ -34,7 +34,7 @@ body {
 
 body.menu-open { overflow: hidden; }
 
-/* ================= OVERLAY ================= */
+/*OVERLAY*/
 .overlay {
   position: fixed;
   inset: 0;
@@ -49,7 +49,7 @@ body.menu-open { overflow: hidden; }
   pointer-events: auto;
 }
 
-/* ================= TOPO ================= */
+/* TOPO */
 .topo {
   display: flex;
   justify-content: space-between;
@@ -77,7 +77,7 @@ body.menu-open { overflow: hidden; }
 }
 .logo span { color: var(--cor-destaque); }
 
-/* ================= NAV DESKTOP ================= */
+/* NAV */
 nav ul {
   list-style: none;
   display: flex;
@@ -94,7 +94,7 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-/* ================= MENU MOBILE ================= */
+/* MENU  */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -119,7 +119,7 @@ nav a:hover {
   background-color: var(--cor-destaque);
 }
 
-/* ================= RESPONSIVIDADE ================= */
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
   .menu-toggle { display: flex; }
   nav {
@@ -142,13 +142,13 @@ nav a:hover {
   }
 }
 
-/* ================= CONTEÚDO ================= */
+/* CONTEÚDO */
 .intro, .container-form, footer {
   position: relative;
   z-index: 1;
 }
 
-/* ================= INTRO ================= */
+/*  INTRO*/
 .intro {
   text-align: center;
   padding: 4rem 1.5rem 2rem;
@@ -169,7 +169,7 @@ nav a:hover {
   margin-bottom: 1.5rem;
 }
 
-/* ================= BOTÃO ================= */
+/*  BOTÃO*/
 .botao {
   background-color: var(--cor-botao);
   color: var(--cor-texto);
@@ -192,7 +192,7 @@ nav a:hover {
   transform: scale(1.07);
 }
 
-/* ================= FORMULÁRIO ================= */
+/* FORMULÁRIO */
 .container-form {
   display: flex;
   justify-content: center;
@@ -257,7 +257,7 @@ nav a:hover {
   color: #721c24;
 }
 
-/* ================= BOTÃO VOLTAR AO TOPO ================= */
+/*  BOTÃO VOLTAR AO TOPO  */
 .back-to-top {
   position: fixed;
   bottom: 40px;
@@ -291,7 +291,7 @@ nav a:hover {
   fill: var(--cor-texto);
 }
 
-/* ================= RODAPÉ ================= */
+/* RODAPÉ */
 footer {
   text-align: center;
   font-size: 0.9rem;
@@ -301,3 +301,4 @@ footer {
   opacity: 0;
   animation: aparecerSuave 1.2s ease forwards 1.2s;
 }
+
