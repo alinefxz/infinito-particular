@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $destinatario = "seuemail@exemplo.com"; // <- Substitua pelo seu e-mail real
     $assunto = "Mensagem enviada pelo site Infinito Particular";
 
-    // Sanitização dos campos (compatível com PHP 5.x+)
+
     $nome_raw = isset($_POST['nome']) ? $_POST['nome'] : '';
     $email_raw = isset($_POST['email']) ? $_POST['email'] : '';
     $mensagem_raw = isset($_POST['mensagem']) ? $_POST['mensagem'] : '';
@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $headers .= "Reply-To: $email_enviado\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-        // Tenta enviar o e-mail (silencia avisos com @)
         if (@mail($destinatario, $assunto, $conteudo, $headers)) {
             $status_classe = 'sucesso';
             $status_mensagem = ' Sua mensagem foi enviada com sucesso! Obrigado pelo contato.';

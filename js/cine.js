@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const filmModal = document.getElementById("filmModal");
   const closeModal = filmModal ? filmModal.querySelector(".close") : null;
 
-  // --- Lógica do Menu Lateral (CORRIGIDA) ---
+  
   if (menuToggle && nav) {
     // Função reutilizável para fechar o menu
     const closeMenu = () => {
