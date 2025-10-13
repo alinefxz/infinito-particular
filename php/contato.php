@@ -1,73 +1,133 @@
 <?php
-$destinatario = "seuemail@exemplo.com"; // Substitua pelo seu e-mail real
-$assunto = "Mensagem enviada pelo site Infinito Particular";
-$sucesso = false;
-$erro = false;
+// 1. Inicialização
+$status_classe = '';
+$status_mensagem = '';
+$mostrar_resultado = false;
+$nome_enviado = '';
+$email_enviado = '';
+$mensagem_enviada = '';
 
+// 2. Verificação e validação
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nome = htmlspecialchars(trim($_POST["nome"] ?? ""));
-    $email = htmlspecialchars(trim($_POST["email"] ?? ""));
-    $mensagem = htmlspecialchars(trim($_POST["mensagem"] ?? ""));
+    $mostrar_resultado = true;
 
-    if (!empty($nome) && !empty($email) && !empty($mensagem) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $conteudo = "Nova mensagem enviada pelo site:\n\n";
-        $conteudo .= "Nome: $nome\n";
-        $conteudo .= "E-mail: $email\n";
-        $conteudo .= "Mensagem:\n$mensagem\n";
+    // E-mail do destinatário
+    $destinatario = "seuemail@exemplo.com"; // <- Substitua pelo seu e-mail real
+    $assunto = "Mensagem enviada pelo site Infinito Particular";
 
-        $headers = "From: $nome <$email>\r\n";
-        $headers .= "Reply-To: $email\r\n";
+    // Sanitização dos campos (compatível com PHP 5.x+)
+    $nome_raw = isset($_POST['nome']) ? $_POST['nome'] : '';
+    $email_raw = isset($_POST['email']) ? $_POST['email'] : '';
+    $mensagem_raw = isset($_POST['mensagem']) ? $_POST['mensagem'] : '';
+
+    $nome_enviado = htmlspecialchars(trim($nome_raw));
+    $email_enviado = filter_var(trim($email_raw), FILTER_SANITIZE_EMAIL);
+    $mensagem_enviada = htmlspecialchars(trim($mensagem_raw));
+
+    // Validação
+    if (empty($nome_enviado) || empty($mensagem_enviada) || !filter_var($email_enviado, FILTER_VALIDATE_EMAIL)) {
+        $status_classe = 'erro';
+        $status_mensagem = 'Por favor, preencha todos os campos corretamente.';
+    } else {
+        // Monta o e-mail
+        $conteudo = "Nome: $nome_enviado\n";
+        $conteudo .= "E-mail: $email_enviado\n\n";
+        $conteudo .= "Mensagem:\n$mensagem_enviada\n";
+
+        $headers = "From: \"$nome_enviado\" <$email_enviado>\r\n";
+        $headers .= "Reply-To: $email_enviado\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-        if (mail($destinatario, $assunto, $conteudo, $headers)) {
-            $sucesso = true;
+        // Tenta enviar o e-mail (silencia avisos com @)
+        if (@mail($destinatario, $assunto, $conteudo, $headers)) {
+            $status_classe = 'sucesso';
+            $status_mensagem = ' Sua mensagem foi enviada com sucesso! Obrigado pelo contato.';
         } else {
-            $erro = true;
+            $status_classe = 'erro';
+            $status_mensagem = 'Desculpe, ocorreu um erro no envio. Tente novamente mais tarde.';
         }
-    } else {
-        $erro = true;
     }
+} else {
+    header("Location: ../html/contato.html");
+    exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contato | Infinito Particular</title>
+  <title>Resultado do Envio | Infinito Particular</title>
   <link rel="icon" type="image/png" href="../imagens/logo.png">
   <link rel="stylesheet" href="../css/contato.css">
+  <style>
+    .mensagem-status {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      animation: fadeIn 0.6s ease;
+    }
+    .mensagem-status.sucesso {
+      background-color: #d4edda;
+      color: #155724;
+      border-left: 5px solid #28a745;
+    }
+    .mensagem-status.erro {
+      background-color: #f8d7da;
+      color: #721c24;
+      border-left: 5px solid #dc3545;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .dados-enviados {
+        background-color: #f3ede7;
+        border: 1px solid #e0d9d1;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 1.5rem;
+        text-align: left;
+    }
+    .dados-enviados h4 {
+        margin-top: 0;
+        font-family: 'Libre Baskerville', serif;
+    }
+    .dados-enviados p {
+        margin-bottom: 0.5rem;
+    }
+  </style>
 </head>
 <body>
 
   <header class="topo">
     <div class="logo">
       <img src="../imagens/logo.png" alt="Logo Infinito Particular">
-      <h1>Infinito<br><span>Particular</span></h1>
+      <h1>Infinito <span>Particular</span></h1>
     </div>
-    <nav id="menu">
-      <ul>
-        <li><a href="../html/index.html">Início</a></li>
-        <li><a href="../html/sobre.html">Sobre</a></li>
-      </ul>
-    </nav>
   </header>
 
   <main class="conteudo-principal">
     <section class="intro">
-      <h2>Resultado do envio</h2>
+      <h2>Resultado do Envio</h2>
 
-      <?php if($sucesso): ?>
-        <p class="mensagem-status sucesso">🎉 Sua mensagem foi enviada com sucesso! Obrigado pelo contato.</p>
-        <a href="../html/contato.html" class="botao">Voltar</a>
-      <?php elseif($erro): ?>
-        <p class="mensagem-status erro">❌ Ocorreu um erro ao enviar. Tente novamente mais tarde.</p>
-        <a href="../html/contato.html" class="botao">Voltar</a>
-      <?php else: ?>
-        <p class="mensagem-status erro">Acesso inválido. Por favor, envie o formulário novamente.</p>
-        <a href="../html/contato.html" class="botao">Voltar</a>
+      <?php if ($mostrar_resultado): ?>
+        <p class="mensagem-status <?php echo $status_classe; ?>">
+          <?php echo $status_mensagem; ?>
+        </p>
       <?php endif; ?>
+
+      <?php if ($status_classe === 'sucesso'): ?>
+        <div class="dados-enviados">
+          <h4>Resumo da sua mensagem:</h4>
+          <p><strong>Nome:</strong> <?php echo $nome_enviado; ?></p>
+          <p><strong>E-mail:</strong> <?php echo $email_enviado; ?></p>
+          <p><strong>Mensagem:</strong><br><?php echo nl2br($mensagem_enviada); ?></p>
+        </div>
+      <?php endif; ?>
+
+      <a href="../html/contato.html" class="botao" style="margin-top: 1.5rem;">Voltar</a>
     </section>
   </main>
 
@@ -78,12 +138,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
   </footer>
 
-  <div class="back-to-top" id="backToTop" title="Voltar ao topo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M12 8l6 6H6z"/>
-    </svg>
-  </div>
-
-  <script src="../js/scriptcontato.js"></script>
 </body>
 </html>
