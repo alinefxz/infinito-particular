@@ -10,6 +10,7 @@ $frases = [
 ];
 $fraseAleatoria = $frases[array_rand($frases)];
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
