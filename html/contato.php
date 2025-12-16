@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato | Infinito Particular</title>
+  <link rel="icon" type="image/png" href="../imagens/logo.png">
+  <link rel="stylesheet" href="../css/contato.css">
+</head>
+<body>
+
+  <!-- Overlay para o menu mobile -->
+  <div class="overlay"></div>
+
+  <!-- Cabeçalho -->
+  <header class="topo" id="topo">
+    <div class="logo">
+      <img src="../imagens/logo.png" alt="Logo Infinito Particular">
+      <h1>Infinito <span>Particular</span></h1>
+    </div>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="conteudo-principal">
+    <section class="intro">
+      <h2>Fale Conosco</h2>
+      <p>Tem alguma dúvida, sugestão ou apenas quer mandar um oi? Preencha o formulário abaixo e entraremos em contato!</p>
+    </section>
+
+    <section class="container-form">
+      <form action="../php/contato.php" method="post" class="form-contato" id="formContato">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
+
+        <button type="submit" class="botao">Enviar Mensagem</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Botão Voltar ao Topo -->
+  <div class="back-to-top" id="backToTop" title="Voltar ao topo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2b2b2b">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="rodape-info">
+      <p>"Só não se perca ao entrar, no nosso infinito particular."</p>
+      <small>Infinito Particular © 2025 — feito com amor e música brasileira</small>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="../js/scriptcontato.js"></script>
+</body>
+</html>
