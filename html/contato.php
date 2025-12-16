@@ -27,8 +27,8 @@
 
     <nav id="nav">
       <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="index.php">Início</a></li>
+        <li><a href="sobre.php">Sobre</a></li>
       </ul>
     </nav>
   </header>

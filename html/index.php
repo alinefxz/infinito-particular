@@ -22,7 +22,7 @@
         <h3>Mundos para explorar</h3>
         <div class="cards">
           
-          <a href="livros.html" target="_blank" rel="noopener noreferrer">
+          <a href="livros.php" target="_blank" rel="noopener noreferrer">
             <div class="card">
               <div class="icone">
                 <img src="../imagens/cardlivros.png" alt="Ícone de livros">
@@ -42,7 +42,7 @@
             </div>
           </a>
           
-          <a href="musicas.html" target="_blank" rel="noopener noreferrer">
+          <a href="musicas.php" target="_blank" rel="noopener noreferrer">
             <div class="card">
               <div class="icone">
                 <img src="../imagens/pngtree-colorful-musical-note-on-a-paper-vector-png-image_12229917.png" alt="Ícone de nota musical">
@@ -58,7 +58,7 @@
       <aside class="sobre">
         <h3>Sobre o Infinito Particular</h3>
         <p>Este é um pedaço de nós, e agora pode ser um pedaço seu. Bem-vindo ao nosso <b>infinito particular</b>. Um convite para se perder no encanto da descoberta. Sinta-se em casa, este refúgio também te pertence.</p>
-        <a href="sobre.html" class="botao-sobre">Saiba mais</a>
+        <a href="sobre.php" class="botao-sobre">Saiba mais</a>
       </aside>
     </div>
   </main>

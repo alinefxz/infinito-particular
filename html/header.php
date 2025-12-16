@@ -12,8 +12,8 @@
   
     <nav id="nav">
       <ul>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="contato.html">Contato</a></li>
+        <li><a href="sobre.php">Sobre</a></li>
+        <li><a href="contato.php">Contato</a></li>
       </ul>
     </nav>
   </header>
