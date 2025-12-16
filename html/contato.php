@@ -63,13 +63,7 @@
     </svg>
   </div>
 
-  <!-- Rodapé -->
-  <footer>
-    <div class="rodape-info">
-      <p>"Só não se perca ao entrar, no nosso infinito particular."</p>
-      <small>Infinito Particular © 2025 — feito com amor e música brasileira</small>
-    </div>
-  </footer>
+  <?php include_once 'footer.php'; ?>
 
   <!-- Script -->
   <script src="../js/scriptcontato.js"></script>

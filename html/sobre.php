@@ -76,12 +76,7 @@ No coração deste universo, residem os três **Mundos para Explorar**, que são
   <img src="../imagens/estrela - Copia.png" class="estrela-flutuante3" alt="estrela de papel">
   </div>
 
-  <footer>
-    <div class="rodape-info">
-        <p>"Só não se perca ao entrar, no nosso infinito particular."</p>
-        <small>Infinito Particular © 2025 — feito com amor e música brasileira</small>
-    </div>
-  </footer>
+  <?php include_once 'footer.php'; ?>
 
   <script src="../js/script.js"></script>
 </body>
