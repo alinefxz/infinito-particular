@@ -30,8 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $status_mensagem = 'Preencha corretamente: nome (mín. 3 letras), e-mail válido e mensagem com pelo menos 10 caracteres.';
     } else {
 
-        $pastaDados = "../dados";
-        $arquivo = $pastaDados . "/contatos.json";
+        // Caminhos CORRETOS (contato.php e dados estão na mesma pasta)
+        $pastaDados = __DIR__ . DIRECTORY_SEPARATOR . 'dados';
+        $arquivo = $pastaDados . DIRECTORY_SEPARATOR . 'contatos.json';
 
         $novoContato = [
             "nome" => $nome_enviado,
@@ -41,22 +42,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ];
 
         try {
-            // Cria a pasta se não existir
+
+            // Cria a pasta dados se não existir
             if (!is_dir($pastaDados)) {
                 mkdir($pastaDados, 0777, true);
             }
 
-            // Cria o arquivo se não existir
+            // Cria o arquivo JSON se não existir
             if (!file_exists($arquivo)) {
-                file_put_contents($arquivo, json_encode([]));
+                file_put_contents($arquivo, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
             }
 
             // Lê o conteúdo do arquivo
             $conteudo = file_get_contents($arquivo);
             $dados = json_decode($conteudo, true);
 
+            // Garante que seja array
             if (!is_array($dados)) {
-                throw new Exception("JSON inválido");
+                $dados = [];
             }
 
             // Adiciona o novo contato
@@ -78,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
 } else {
-    header("Location: ../html/contato.php");
+    header("Location: contato.php");
     exit;
 }
 ?>
@@ -88,8 +91,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resultado do Envio | Infinito Particular</title>
-  <link rel="icon" type="image/png" href="../imagens/logo.png">
-  <link rel="stylesheet" href="../css/contato.css">
+  <link rel="icon" type="image/png" href="imagens/logo.png">
+  <link rel="stylesheet" href="css/contato.css">
 
   <style>
     .mensagem-status {
@@ -128,25 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
 
-<header class="topo" id="topo">
-    <div class="logo">
-      <img src="../imagens/logo.png" alt="Logo Infinito Particular">
-      <h1>Infinito <span>Particular</span></h1>
-    </div>
-
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <nav id="nav">
-      <ul>
-        <li><a href="index.php">Início</a></li>
-        <li><a href="sobre.php">Sobre</a></li>
-      </ul>
-    </nav>
-  </header>
+<?php include_once 'header.php'; ?>
 
 <main class="conteudo-principal">
   <section class="intro">
@@ -167,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
     <?php endif; ?>
 
-    <a href="../html/contato.php" class="botao" style="margin-top: 1.5rem;">Voltar</a>
+    <a href="contato.php" class="botao" style="margin-top: 1.5rem;">Voltar</a>
   </section>
 </main>
 
