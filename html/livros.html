@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundos Escritos</title>
+  <link rel="icon" type="image/png" href="../imagens/logo.png">
+  <link rel="stylesheet" href="../css/livros.css">
+</head>
+
+<body>
+  <header class="topo" id="topo">
+    <div class="logo">
+      <img src="../imagens/logo.png" alt="Logo Infinito Particular">
+      <h1>Infinito<br><span>Particular</span></h1>
+    </div>
+
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Mundos Escritos</h2>
+      <p>Entre palavras e páginas, você se perde, se encontra e se sente em casa.<br>
+        Sejam bem-vindos aos <b>Mundos Escritos</b> — nosso cantinho, agora também seu.</p>
+    </section>
+
+    <section class="bookshelf-container">
+      <div class="bookshelf">
+
+        <!-- Livro 1: Academia dos Casos Arquivados  -->
+        <div class="book" data-book="1">
+          <img src="../imagens/academia.jpeg" alt="Academia dos Casos Arquivados">
+          <div class="book-spine">Academia dos Casos Arquivados</div>
+        </div>
+
+        <!-- Livro 2: Amor, Teoricamente -->
+        <div class="book" data-book="2">
+          <img src="../imagens/amorteoricamente.jpeg" alt="Amor, Teoricamente">
+          <div class="book-spine">Amor, Teoricamente</div>
+        </div>
+
+        <!-- Livro 3: A Hora da Estrela -->
+        <div class="book" data-book="3">
+          <img src="../imagens/horadaestrela.jpeg" alt="A Hora da Estrela">
+          <div class="book-spine">A Hora da Estrela</div>
+        </div>
+
+        <!-- Livro 4: Jantar Secreto -->
+        <div class="book" data-book="4">
+          <img src="../imagens/jantarsecreto.jpeg" alt="Jantar Secreto">
+          <div class="book-spine">Jantar Secreto</div>
+        </div>
+
+        <!-- Livro 5: Manual de Assassinato Para Boas Garotas -->
+        <div class="book" data-book="5">
+          <img src="../imagens/manualdeassassinato.jpeg" alt="Manual de Assassinato Para Boas Garotas">
+          <div class="book-spine">Manual de Assassinato Para Boas Garotas</div>
+        </div>
+
+        <!-- Livro 6: Morando Com Um Vampiro -->
+        <div class="book" data-book="6">
+          <img src="../imagens/morando.jpeg" alt="Morando Com Um Vampiro">
+          <div class="book-spine">Morando Com Um Vampiro</div>
+        </div>
+
+        <!-- Livro 7: Nunca Minta -->
+        <div class="book" data-book="7">
+          <img src="../imagens/nuncaminta.jpeg" alt="Nunca Minta">
+          <div class="book-spine">Nunca Minta</div>
+        </div>
+
+        <!-- Livro 8: Pequena Coreografia do Adeus -->
+        <div class="book" data-book="8">
+          <img src="../imagens/pequenacoregografia.jpeg" alt="Pequena Coreografia do Adeus">
+          <div class="book-spine">Pequena Coreografia do Adeus</div>
+        </div>
+
+        <!-- Livro 9: O Peso do Pássaro Morto -->
+        <div class="book" data-book="9">
+          <img src="../imagens/pesodopassaro.jpeg" alt="O Peso do Pássaro Morto">
+          <div class="book-spine">O Peso do Pássaro Morto</div>
+        </div>
+
+        <!-- Livro 10: Um Amor Problemático de Verão -->
+        <div class="book" data-book="10">
+          <img src="../imagens/umamor.jpeg" alt="Um Amor Problemático de Verão">
+          <div class="book-spine">Um Amor Problemático de Verão</div>
+        </div>
+      </div>
+    </section>
+
+
+
+<div class="book-sorter" id="bookSorter">
+  <button id="sortearLivro" class="sortear-btn" aria-label="Sortear próxima leitura">Sortear Próxima Leitura</button>
+  <p id="livroSorteado" aria-live="polite"></p>
+</div>
+
+
+
+    <!-- Modal -->
+    <div id="bookModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+          <img id="modalCover" src="" alt="Capa do livro">
+          <div class="modal-info">
+            <h2 id="modalTitle"></h2>
+            <p class="modal-author"><strong>Autor:</strong> <span id="modalAuthor"></span></p>
+            <p class="modal-year"><strong>Ano:</strong> <span id="modalYear"></span></p>
+            <p class="modal-pages"><strong>Páginas:</strong> <span id="modalPages"></span></p>
+            <p class="modal-description" id="modalDescription"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="back-to-top" id="backToTop">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+    </svg>
+  </div>
+
+  <footer>
+    <div class="rodape-info">
+        <p>"Só não se perca ao entrar, no nosso infinito particular."</p>
+        <small>Infinito Particular © 2025 — feito com amor e música brasileira</small>
+    </div>
+  </footer>
+
+  <script src="../js/scriptlivros.js"></script>
+</body>
+</html>

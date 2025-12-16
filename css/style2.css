@@ -1,5 +1,5 @@
 
-@@ -0,0 +1,416 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;600&display=swap');
 
 * {
@@ -17,6 +17,9 @@ body {
   background-color: #f9f7f3;
   color: #2b2b2b;
   line-height: 1.6;
+}
+h1, h2, h3 {
+  font-family: 'Libre Baskerville', serif;
 }
 
 /* topo */
@@ -432,21 +435,40 @@ footer {
     line-height: 1.2;    
     font-size: 1.1rem;   
   }
-  .estrela-flutuante {
-    position: fixed;       
-    top: 20%;             
-    right: 10%;           
-    width: 60px;           
-    opacity: 0.8;         
-    z-index: 1000;
-    animation: flutuar 6s infinite ease-in-out; 
-  }
-  
-  @keyframes flutuar {
-    0% { transform: translateY(0px) rotate(5deg); }
-    50% { transform: translateY(-15px) rotate(10deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-  }
+  /* contêiner das estrelas - centraliza e mantém no fundo */
+.estrelas-container {
+  position: absolute;
+  bottom: 30px;         /* distância do fundo da página */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 25px;            /* espaçamento entre as estrelas */
+  z-index: -1;
+  pointer-events: none; /* impede cliques */
+}
+
+/* cada estrela */
+.estrela-flutuante1,
+.estrela-flutuante2,
+.estrela-flutuante3 {
+  opacity: 0,50;
+  animation: flutuar 6s infinite ease-in-out;
+}
+
+/* tamanhos diferentes */
+.estrela-flutuante1 { width: 50px; animation-duration: 6s; }
+.estrela-flutuante2 { width: 65px; animation-duration: 7s; }
+.estrela-flutuante3 { width: 55px; animation-duration: 8s; }
+
+/* animação de flutuar */
+@keyframes flutuar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
   /* efeito de transição */
   body {
     opacity: 0;

@@ -1,82 +1,77 @@
-// Script do menu hambúrguer
+// Menu hambúrguer
 const menuToggle = document.getElementById('menuToggle');
 const nav = document.getElementById('nav');
 const body = document.body;
 
-menuToggle.addEventListener('click', function() {
-  menuToggle.classList.toggle('active');
-  nav.classList.toggle('active');
-  body.classList.toggle('menu-open');
-});
-
-// Fechar menu ao clicar em um link
-const navLinks = nav.querySelectorAll('a');
-navLinks.forEach(link => {
-  link.addEventListener('click', function() {
-    menuToggle.classList.remove('active');
-    nav.classList.remove('active');
-    body.classList.remove('menu-open');
+if(menuToggle && nav) {
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    nav.classList.toggle('active');
+    body.classList.toggle('menu-open');
   });
-});
 
-// Fechar menu ao clicar no overlay
-body.addEventListener('click', function(e) {
-  if (body.classList.contains('menu-open') && 
-      !nav.contains(e.target) && 
-      !menuToggle.contains(e.target)) {
-    menuToggle.classList.remove('active');
-    nav.classList.remove('active');
-    body.classList.remove('menu-open');
-  }
-});
+  // Fechar menu ao clicar em um link
+  const navLinks = nav.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      nav.classList.remove('active');
+      body.classList.remove('menu-open');
+    });
+  });
 
-// Script do botão voltar ao início
+  // Fechar menu ao clicar no overlay
+  body.addEventListener('click', (e) => {
+    if (body.classList.contains('menu-open') && 
+        !nav.contains(e.target) && 
+        !menuToggle.contains(e.target)) {
+      menuToggle.classList.remove('active');
+      nav.classList.remove('active');
+      body.classList.remove('menu-open');
+    }
+  });
+}
+
+// Botão voltar ao topo
 const backToTop = document.getElementById('backToTop');
 const footer = document.querySelector('footer');
 
-// Mostrar/esconder botão baseado no scroll e posição do rodapé
-window.addEventListener('scroll', function() {
-  const footerRect = footer.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
-  
-  // Mostrar botão se rolou mais de 300px
-  if (window.pageYOffset > 300) {
-    // Verificar se o rodapé está visível na tela
-    if (footerRect.top < windowHeight) {
-      // Rodapé está visível, esconder botão
-      backToTop.classList.remove('visible');
+if(backToTop && footer) {
+  window.addEventListener('scroll', () => {
+    const footerRect = footer.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    if (window.pageYOffset > 300) {
+      if (footerRect.top < windowHeight) {
+        backToTop.classList.remove('visible');
+      } else {
+        backToTop.classList.add('visible');
+      }
     } else {
-      // Rodapé não está visível, mostrar botão
-      backToTop.classList.add('visible');
+      backToTop.classList.remove('visible');
     }
-  } else {
-    backToTop.classList.remove('visible');
-  }
-});
-
-// Voltar ao topo ao clicar
-backToTop.addEventListener('click', function() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
   });
-});
-// efeito de transição 
 
-document.addEventListener("DOMContentLoaded", function() {
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// Efeito fade-in
+document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("fade-in");
-});
 
+  const links = document.querySelectorAll("a[href]");
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      if(!href || href.startsWith("#")) return; // evita erros com links vazios ou anchors
 
-const links = document.querySelectorAll("a[href]");
-links.forEach(link => {
-  link.addEventListener("click", function(e) {
-    e.preventDefault(); 
-    let href = this.getAttribute("href");
-
-    document.body.classList.remove("fade-in"); 
-    setTimeout(() => {
-      window.location.href = href; 
-    }, 500); 
+      e.preventDefault(); 
+      document.body.classList.remove("fade-in"); 
+      setTimeout(() => {
+        window.location.href = href; 
+      }, 500); 
+    });
   });
 });
