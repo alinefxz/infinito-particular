@@ -1,7 +1,4 @@
 <?php
-// ===============================
-// 1. Inicialização
-// ===============================
 session_start();
 
 $status_classe = '';
@@ -12,9 +9,6 @@ $nome_enviado = '';
 $email_enviado = '';
 $mensagem_enviada = '';
 
-// ===============================
-// 2. Verificação do envio
-// ===============================
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $mostrar_resultado = true;
@@ -29,9 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email_enviado = filter_var(trim($email_raw), FILTER_SANITIZE_EMAIL);
     $mensagem_enviada = htmlspecialchars(trim($mensagem_raw));
 
-    // ===============================
-    // 3. Validação no servidor
-    // ===============================
     if (
         strlen($nome_enviado) < 3 ||
         strlen($mensagem_enviada) < 10 ||
@@ -41,9 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $status_mensagem = 'Preencha corretamente: nome (mín. 3 letras), e-mail válido e mensagem com pelo menos 10 caracteres.';
     } else {
 
-        // ===============================
-        // 4. Salvamento em arquivo JSON
-        // ===============================
         $pastaDados = "../dados";
         $arquivo = $pastaDados . "/contatos.json";
 
