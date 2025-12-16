@@ -1,162 +1,71 @@
-<?php
-session_start();
-
-$status_classe = '';
-$status_mensagem = '';
-$mostrar_resultado = false;
-
-$nome_enviado = '';
-$email_enviado = '';
-$mensagem_enviada = '';
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $mostrar_resultado = true;
-
-    $nome_raw = $_POST['nome'] ?? '';
-    $email_raw = $_POST['email'] ?? '';
-    $mensagem_raw = $_POST['mensagem'] ?? '';
-
-    $nome_enviado = htmlspecialchars(trim($nome_raw));
-    $email_enviado = filter_var(trim($email_raw), FILTER_SANITIZE_EMAIL);
-    $mensagem_enviada = htmlspecialchars(trim($mensagem_raw));
-
-    if (
-        strlen($nome_enviado) < 3 ||
-        strlen($mensagem_enviada) < 10 ||
-        !filter_var($email_enviado, FILTER_VALIDATE_EMAIL)
-    ) {
-        $status_classe = 'erro';
-        $status_mensagem = 'Preencha corretamente: nome (mín. 3 letras), e-mail válido e mensagem com pelo menos 10 caracteres.';
-    } else {
-
-        // Caminhos CORRETOS (contato.php e dados estão na mesma pasta)
-        $pastaDados = __DIR__ . DIRECTORY_SEPARATOR . 'dados';
-        $arquivo = $pastaDados . DIRECTORY_SEPARATOR . 'contatos.json';
-
-        $novoContato = [
-            "nome" => $nome_enviado,
-            "email" => $email_enviado,
-            "mensagem" => $mensagem_enviada,
-            "data" => date("Y-m-d H:i:s")
-        ];
-
-        try {
-
-            // Cria a pasta dados se não existir
-            if (!is_dir($pastaDados)) {
-                mkdir($pastaDados, 0777, true);
-            }
-
-            // Cria o arquivo JSON se não existir
-            if (!file_exists($arquivo)) {
-                file_put_contents($arquivo, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-            }
-
-            // Lê o conteúdo do arquivo
-            $conteudo = file_get_contents($arquivo);
-            $dados = json_decode($conteudo, true);
-
-            // Garante que seja array
-            if (!is_array($dados)) {
-                $dados = [];
-            }
-
-            // Adiciona o novo contato
-            $dados[] = $novoContato;
-
-            // Salva no arquivo
-            file_put_contents(
-                $arquivo,
-                json_encode($dados, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
-            );
-
-            $status_classe = 'sucesso';
-            $status_mensagem = 'Mensagem enviada e salva com sucesso!';
-
-        } catch (Exception $e) {
-            $status_classe = 'erro';
-            $status_mensagem = 'Erro ao salvar os dados.';
-        }
-    }
-
-} else {
-    header("Location: contato.php");
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resultado do Envio | Infinito Particular</title>
-  <link rel="icon" type="image/png" href="imagens/logo.png">
-  <link rel="stylesheet" href="css/contato.css">
-
-  <style>
-    .mensagem-status {
-      padding: 1rem;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-      animation: fadeIn 0.6s ease;
-    }
-    .mensagem-status.sucesso {
-      background-color: #d4edda;
-      color: #155724;
-      border-left: 5px solid #28a745;
-    }
-    .mensagem-status.erro {
-      background-color: #f8d7da;
-      color: #721c24;
-      border-left: 5px solid #dc3545;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .dados-enviados {
-        background-color: #f3ede7;
-        border: 1px solid #e0d9d1;
-        padding: 1.5rem;
-        border-radius: 8px;
-        margin-top: 1.5rem;
-        text-align: left;
-    }
-    .dados-enviados p {
-        margin-bottom: 0.5rem;
-    }
-  </style>
+  <title>Contato | Infinito Particular</title>
+  <link rel="icon" type="image/png" href="../imagens/logo.png">
+  <link rel="stylesheet" href="../css/contato.css">
 </head>
 <body>
 
-<?php include_once 'header.php'; ?>
+  <!-- Overlay para o menu mobile -->
+  <div class="overlay"></div>
 
-<main class="conteudo-principal">
-  <section class="intro">
-    <h2>Resultado do Envio</h2>
+  <!-- Cabeçalho -->
+  <header class="topo" id="topo">
+    <div class="logo">
+      <img src="../imagens/logo.png" alt="Logo Infinito Particular">
+      <h1>Infinito <span>Particular</span></h1>
+    </div>
 
-    <?php if ($mostrar_resultado): ?>
-      <p class="mensagem-status <?php echo $status_classe; ?>">
-        <?php echo $status_mensagem; ?>
-      </p>
-    <?php endif; ?>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-    <?php if ($status_classe === 'sucesso'): ?>
-      <div class="dados-enviados">
-        <h4>Resumo da sua mensagem:</h4>
-        <p><strong>Nome:</strong> <?php echo $nome_enviado; ?></p>
-        <p><strong>E-mail:</strong> <?php echo $email_enviado; ?></p>
-        <p><strong>Mensagem:</strong><br><?php echo nl2br($mensagem_enviada); ?></p>
-      </div>
-    <?php endif; ?>
+    <nav id="nav">
+      <ul>
+        <li><a href="index.php">Início</a></li>
+        <li><a href="sobre.php">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <a href="contato.php" class="botao" style="margin-top: 1.5rem;">Voltar</a>
-  </section>
-</main>
+  <!-- Conteúdo principal -->
+  <main class="conteudo-principal">
+    <section class="intro">
+      <h2>Fale Conosco</h2>
+      <p>Tem alguma dúvida, sugestão ou apenas quer mandar um oi? Preencha o formulário abaixo e entraremos em contato!</p>
+    </section>
 
-<?php include_once 'footer.php'; ?>
+    <section class="container-form">
+      <form action="../php/contato.php" method="post" class="form-contato" id="formContato">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
 
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
+
+        <button type="submit" class="botao">Enviar Mensagem</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Botão Voltar ao Topo -->
+  <div class="back-to-top" id="backToTop" title="Voltar ao topo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2b2b2b">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+  </div>
+
+    <?php include_once '1footer.php'; ?>
+
+  <!-- Script -->
+  <script src="../js/scriptcontato.js"></script>
 </body>
 </html>

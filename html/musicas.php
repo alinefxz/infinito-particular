@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinito Particular</title>
+  <link rel="icon" type="image/png" href="../imagens/logo.png">
+  <link rel="stylesheet" href="../css/musicas.css">
+</head>
+<body>
+<?php include_once '2header.php'; ?>
+
+  <main>
+    <section class="musicas-section">
+      <h2 class="section-title">Nosso Universo Musical</h2>
+      <h4>Se perca entre as melhores canções brasileiras</h4>
+      <div class="cards">
+        <div class="song" data-song="1">
+          <img src="../imagens/infinito.jpg" alt="Infinito Particular">
+          <div class="song-info">
+            <h4>Infinito Particular</h4>
+            <p>Marisa Monte</p>
+          </div>
+        </div>
+        <div class="song" data-song="2">
+          <img src="../imagens/oceano.jpg" alt="Oceano">
+          <div class="song-info">
+            <h4>Oceano</h4>
+            <p>Djavan</p>
+          </div>
+        </div>
+        <div class="song" data-song="3">
+      <img src="../imagens/nando.jpg" alt="Espatódea - Nando Reis">
+      <div class="song-info">
+        <h4>Espatódea</h4>
+        <p>Nando Reis</p>
+      </div>
+    </div>
+     <div class="song" data-song="4">
+      <img src="../imagens/ca.jpg" alt="Todo Amor Que Houver Nessa Vida - Cazuza">
+      <div class="song-info">
+        <h4>Todo Amor Que Houver</h4>
+        <p>Cazuza</p>
+      </div>
+    </div>
+     <div class="song" data-song="5">
+      <img src="../imagens/tribalistas.jpg" alt="Velha Infância - Tribalistas">
+      <div class="song-info">
+        <h4>Velha Infância</h4>
+        <p>Tribalistas</p>
+      </div>
+    </div>
+    <div class="song" data-song="6">
+  <img src="../imagens/roda-gigante.jpg" alt="Roda-Gigante - Biquini Cavadão">
+  <div class="song-info">
+    <h4>Roda-Gigante</h4>
+    <p>Biquini Cavadão</p>
+  </div>
+</div>
+
+      </div>
+    </section>
+
+    <section class="playlist-section">
+      <h4>Ficou com aquela vontade de mergulhar nas nossas músicas? Basta <a href="#" id="playlistLink" target="_blank">acessar nossa playlist</a> lá você encontrará essas e muito mais! <img src="../imagens/spotify-logo-transparent.png" alt="Spotify Logo"></h4>
+    </section>
+
+    <div id="songModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="modalCover" src="" alt="">
+        <h2 id="modalTitle"></h2>
+        <h3 id="modalArtist"></h3>
+        <p id="modalYear"></p>
+        <p id="modalAlbum"></p>
+        <p id="modalDescription"></p>
+      </div>
+    </div>
+  </main>
+
+  <div class="back-to-top" id="backToTop">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+    </svg>
+  </div>
+
+  <?php include_once '1footer.php'; ?>
+
+  <script src="../js/musicas.js"></script>
+</body>
+</html>

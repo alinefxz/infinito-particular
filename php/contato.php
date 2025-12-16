@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
 } else {
-    header("Location: ../html/contato.html");
+    header("Location: ../html/contato.php");
     exit;
 }
 ?>
@@ -168,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
     <?php endif; ?>
 
-    <a href="../html/contato.html" class="botao" style="margin-top: 1.5rem;">Voltar</a>
+    <a href="../html/contato.php" class="botao" style="margin-top: 1.5rem;">Voltar</a>
   </section>
 </main>
 
