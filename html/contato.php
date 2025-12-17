@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,17 +10,16 @@
 </head>
 <body>
 
-  <!-- Overlay para o menu mobile -->
-  <div class="overlay"></div>
+<!-- Overlay para menu mobile -->
+<div class="overlay"></div>
 
-  <!-- Cabeçalho -->
-  <header class="topo" id="topo">
+<header class="topo" id="topo">
     <div class="logo">
       <img src="../imagens/logo.png" alt="Logo Infinito Particular">
-      <h1>Infinito <span>Particular</span></h1>
+      <h1>Infinito<br><span>Particular</span></h1>
     </div>
 
-    <div class="menu-toggle" id="menu-toggle">
+    <div class="menu-toggle" id="menuToggle">
       <span></span>
       <span></span>
       <span></span>
@@ -33,39 +33,45 @@
     </nav>
   </header>
 
-  <!-- Conteúdo principal -->
-  <main class="conteudo-principal">
-    <section class="intro">
-      <h2>Fale Conosco</h2>
-      <p>Tem alguma dúvida, sugestão ou apenas quer mandar um oi? Preencha o formulário abaixo e entraremos em contato!</p>
-    </section>
+<main class="conteudo-principal">
 
-    <section class="container-form">
-      <form action="../php/contato.php" method="post" class="form-contato" id="formContato">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+  <section class="intro">
+    <h2>Fale Conosco</h2>
+    <p>Tem alguma dúvida, sugestão ou apenas quer mandar um oi?
+       Preencha o formulário abaixo e entraremos em contato.</p>
+  </section>
 
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+  <section class="container-form">
+    <form 
+      action="../php/processa_contato.php" 
+      method="POST" 
+      class="form-contato" 
+      id="formContato"
+    >
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" required>
 
-        <label for="mensagem">Mensagem</label>
-        <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" required>
 
-        <button type="submit" class="botao">Enviar Mensagem</button>
-      </form>
-    </section>
-  </main>
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
 
-  <!-- Botão Voltar ao Topo -->
-  <div class="back-to-top" id="backToTop" title="Voltar ao topo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2b2b2b">
-        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-    </svg>
-  </div>
+      <button type="submit" class="botao">Enviar Mensagem</button>
+    </form>
+  </section>
 
-    <?php include_once '1footer.php'; ?>
+</main>
 
-  <!-- Script -->
-  <script src="../js/scriptcontato.js"></script>
+<!-- Botão Voltar ao Topo -->
+<div class="back-to-top" id="backToTop">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+  </svg>
+</div>
+
+<?php include_once '1footer.php'; ?>
+
+<script src="../js/scriptcontato.js"></script>
 </body>
 </html>
