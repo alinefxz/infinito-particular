@@ -42,12 +42,13 @@
   </section>
 
   <section class="container-form">
-    <form 
-      action="../php/processa_contato.php" 
-      method="POST" 
-      class="form-contato" 
-      id="formContato"
-    >
+  <form 
+    action="../php/processa_contato.php" 
+    method="POST"
+    class="form-contato"
+    id="formContato"
+  >
+
       <label for="nome">Nome</label>
       <input type="text" id="nome" name="nome" required>
 
